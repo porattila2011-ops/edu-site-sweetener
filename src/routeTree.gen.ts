@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
+import { Route as HirekRouteImport } from './routes/hirek'
 import { Route as IndexRouteImport } from './routes/index'
 
 const IskolankrolRoute = IskolankrolRouteImport.update({
   id: '/iskolankrol',
   path: '/iskolankrol',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HirekRoute = HirekRouteImport.update({
+  id: '/hirek',
+  path: '/hirek',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -25,27 +31,31 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/iskolankrol'
+  fullPaths: '/' | '/hirek' | '/iskolankrol'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/iskolankrol'
-  id: '__root__' | '/' | '/iskolankrol'
+  to: '/' | '/hirek' | '/iskolankrol'
+  id: '__root__' | '/' | '/hirek' | '/iskolankrol'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HirekRoute: typeof HirekRoute
   IskolankrolRoute: typeof IskolankrolRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/iskolankrol'
       fullPath: '/iskolankrol'
       preLoaderRoute: typeof IskolankrolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hirek': {
+      id: '/hirek'
+      path: '/hirek'
+      fullPath: '/hirek'
+      preLoaderRoute: typeof HirekRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HirekRoute: HirekRoute,
   IskolankrolRoute: IskolankrolRoute,
 }
 export const routeTree = rootRouteImport
