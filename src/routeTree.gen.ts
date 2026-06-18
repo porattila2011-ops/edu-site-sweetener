@@ -9,8 +9,14 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
 import { Route as IndexRouteImport } from './routes/index'
 
+const IskolankrolRoute = IskolankrolRouteImport.update({
+  id: '/iskolankrol',
+  path: '/iskolankrol',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -19,28 +25,39 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/iskolankrol'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/iskolankrol'
+  id: '__root__' | '/' | '/iskolankrol'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  IskolankrolRoute: typeof IskolankrolRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/iskolankrol': {
+      id: '/iskolankrol'
+      path: '/iskolankrol'
+      fullPath: '/iskolankrol'
+      preLoaderRoute: typeof IskolankrolRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -53,6 +70,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  IskolankrolRoute: IskolankrolRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
