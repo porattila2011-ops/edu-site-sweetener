@@ -9,12 +9,18 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
 import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
 import { Route as HirekRouteImport } from './routes/hirek'
 import { Route as DokumentumtarRouteImport } from './routes/dokumentumtar'
 import { Route as BuszkesegeinkRouteImport } from './routes/buszkesegeink'
 import { Route as IndexRouteImport } from './routes/index'
 
+const KapcsolatRoute = KapcsolatRouteImport.update({
+  id: '/kapcsolat',
+  path: '/kapcsolat',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IskolankrolRoute = IskolankrolRouteImport.update({
   id: '/iskolankrol',
   path: '/iskolankrol',
@@ -47,6 +53,7 @@ export interface FileRoutesByFullPath {
   '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
+  '/kapcsolat': typeof KapcsolatRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -54,6 +61,7 @@ export interface FileRoutesByTo {
   '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
+  '/kapcsolat': typeof KapcsolatRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -62,6 +70,7 @@ export interface FileRoutesById {
   '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
+  '/kapcsolat': typeof KapcsolatRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -71,8 +80,15 @@ export interface FileRouteTypes {
     | '/dokumentumtar'
     | '/hirek'
     | '/iskolankrol'
+    | '/kapcsolat'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/buszkesegeink' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
+  to:
+    | '/'
+    | '/buszkesegeink'
+    | '/dokumentumtar'
+    | '/hirek'
+    | '/iskolankrol'
+    | '/kapcsolat'
   id:
     | '__root__'
     | '/'
@@ -80,6 +96,7 @@ export interface FileRouteTypes {
     | '/dokumentumtar'
     | '/hirek'
     | '/iskolankrol'
+    | '/kapcsolat'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -88,10 +105,18 @@ export interface RootRouteChildren {
   DokumentumtarRoute: typeof DokumentumtarRoute
   HirekRoute: typeof HirekRoute
   IskolankrolRoute: typeof IskolankrolRoute
+  KapcsolatRoute: typeof KapcsolatRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/kapcsolat': {
+      id: '/kapcsolat'
+      path: '/kapcsolat'
+      fullPath: '/kapcsolat'
+      preLoaderRoute: typeof KapcsolatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/iskolankrol': {
       id: '/iskolankrol'
       path: '/iskolankrol'
@@ -136,6 +161,7 @@ const rootRouteChildren: RootRouteChildren = {
   DokumentumtarRoute: DokumentumtarRoute,
   HirekRoute: HirekRoute,
   IskolankrolRoute: IskolankrolRoute,
+  KapcsolatRoute: KapcsolatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
