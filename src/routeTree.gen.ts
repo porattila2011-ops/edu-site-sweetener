@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
 import { Route as HirekRouteImport } from './routes/hirek'
 import { Route as DokumentumtarRouteImport } from './routes/dokumentumtar'
+import { Route as BuszkesegeinkRouteImport } from './routes/buszkesegeink'
 import { Route as IndexRouteImport } from './routes/index'
 
 const IskolankrolRoute = IskolankrolRouteImport.update({
@@ -29,6 +30,11 @@ const DokumentumtarRoute = DokumentumtarRouteImport.update({
   path: '/dokumentumtar',
   getParentRoute: () => rootRouteImport,
 } as any)
+const BuszkesegeinkRoute = BuszkesegeinkRouteImport.update({
+  id: '/buszkesegeink',
+  path: '/buszkesegeink',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
@@ -50,20 +58,33 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
+  fullPaths:
+    | '/'
+    | '/buszkesegeink'
+    | '/dokumentumtar'
+    | '/hirek'
+    | '/iskolankrol'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
-  id: '__root__' | '/' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
+  to: '/' | '/buszkesegeink' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
+  id:
+    | '__root__'
+    | '/'
+    | '/buszkesegeink'
+    | '/dokumentumtar'
+    | '/hirek'
+    | '/iskolankrol'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BuszkesegeinkRoute: typeof BuszkesegeinkRoute
   DokumentumtarRoute: typeof DokumentumtarRoute
   HirekRoute: typeof HirekRoute
   IskolankrolRoute: typeof IskolankrolRoute
@@ -92,6 +113,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof DokumentumtarRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/buszkesegeink': {
+      id: '/buszkesegeink'
+      path: '/buszkesegeink'
+      fullPath: '/buszkesegeink'
+      preLoaderRoute: typeof BuszkesegeinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -104,6 +132,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BuszkesegeinkRoute: BuszkesegeinkRoute,
   DokumentumtarRoute: DokumentumtarRoute,
   HirekRoute: HirekRoute,
   IskolankrolRoute: IskolankrolRoute,
