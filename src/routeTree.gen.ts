@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
 import { Route as HirekRouteImport } from './routes/hirek'
+import { Route as DokumentumtarRouteImport } from './routes/dokumentumtar'
 import { Route as IndexRouteImport } from './routes/index'
 
 const IskolankrolRoute = IskolankrolRouteImport.update({
@@ -23,6 +24,11 @@ const HirekRoute = HirekRouteImport.update({
   path: '/hirek',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DokumentumtarRoute = DokumentumtarRouteImport.update({
+  id: '/dokumentumtar',
+  path: '/dokumentumtar',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -31,30 +37,34 @@ const IndexRoute = IndexRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/dokumentumtar': typeof DokumentumtarRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/hirek' | '/iskolankrol'
+  fullPaths: '/' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hirek' | '/iskolankrol'
-  id: '__root__' | '/' | '/hirek' | '/iskolankrol'
+  to: '/' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
+  id: '__root__' | '/' | '/dokumentumtar' | '/hirek' | '/iskolankrol'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  DokumentumtarRoute: typeof DokumentumtarRoute
   HirekRoute: typeof HirekRoute
   IskolankrolRoute: typeof IskolankrolRoute
 }
@@ -75,6 +85,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HirekRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/dokumentumtar': {
+      id: '/dokumentumtar'
+      path: '/dokumentumtar'
+      fullPath: '/dokumentumtar'
+      preLoaderRoute: typeof DokumentumtarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  DokumentumtarRoute: DokumentumtarRoute,
   HirekRoute: HirekRoute,
   IskolankrolRoute: IskolankrolRoute,
 }
