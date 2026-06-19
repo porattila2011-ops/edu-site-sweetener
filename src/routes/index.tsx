@@ -147,7 +147,7 @@ function Home() {
             />
           </div>
           <div>
-            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-leaf">Értékeink</p>
+            <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-sun">Értékeink</p>
             <h2 className="mt-3 text-3xl font-extrabold text-foreground md:text-4xl">
               Türelem, elfogadás és sok-sok öröm
             </h2>
@@ -158,7 +158,7 @@ function Home() {
             <div className="mt-8 space-y-4">
               {VALUES.map((v) => (
                 <div key={v.title} className="flex gap-4 rounded-2xl bg-card/70 p-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-leaf/15 text-leaf">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-sun/15 text-sun">
                     <v.icon className="h-5 w-5" />
                   </span>
                   <div>
