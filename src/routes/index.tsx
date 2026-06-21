@@ -189,17 +189,29 @@ function Home() {
           </Button>
         </div>
         <div className="mt-10 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-          {NEWS.slice(0, 3).map((n) => (
+          {news?.map((n) => (
             <article
-              key={n.title}
-              className="flex flex-col rounded-3xl border border-border/60 bg-card p-7 shadow-[var(--shadow-soft)]"
+              key={n.id}
+              className="flex flex-col overflow-hidden rounded-3xl border border-border/60 bg-card shadow-[var(--shadow-soft)]"
             >
-              <div className="flex items-center gap-3 text-xs font-bold">
-                <span className="rounded-full bg-secondary px-3 py-1 text-secondary-foreground">{n.tag}</span>
-                <span className="text-muted-foreground">{n.date}</span>
+              {n.image_url && (
+                <img
+                  src={n.image_url}
+                  alt={n.title}
+                  loading="lazy"
+                  className="aspect-[16/9] w-full object-cover"
+                />
+              )}
+              <div className="flex flex-1 flex-col p-7">
+                <div className="flex items-center gap-3 text-xs font-bold">
+                  {n.tag && (
+                    <span className="rounded-full bg-secondary px-3 py-1 text-secondary-foreground">{n.tag}</span>
+                  )}
+                  <span className="text-muted-foreground">{formatNewsDate(n.published_at)}</span>
+                </div>
+                <h3 className="mt-4 font-display text-lg font-extrabold leading-snug text-foreground">{n.title}</h3>
+                <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{n.excerpt}</p>
               </div>
-              <h3 className="mt-4 font-display text-lg font-extrabold leading-snug text-foreground">{n.title}</h3>
-              <p className="mt-2 flex-1 text-sm leading-relaxed text-muted-foreground">{n.excerpt}</p>
             </article>
           ))}
         </div>
