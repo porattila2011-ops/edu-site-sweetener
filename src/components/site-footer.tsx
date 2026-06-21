@@ -67,8 +67,13 @@ export function SiteFooter() {
       <div className="border-t border-border/60">
         <div className="container-page flex flex-col items-center justify-between gap-2 py-5 text-xs text-muted-foreground md:flex-row">
           <p>© {new Date().getFullYear()} Dr. Molnár István EGYMI. Minden jog fenntartva.</p>
-          <p className="flex items-center gap-1.5">
-            <GraduationCap className="h-4 w-4" /> Befogadó · Ökoiskola · Boldog Iskola
+          <p className="flex items-center gap-3">
+            <span className="flex items-center gap-1.5">
+              <GraduationCap className="h-4 w-4" /> Befogadó · Ökoiskola · Boldog Iskola
+            </span>
+            <Link to="/admin" className="hover:text-primary">
+              Szerkesztő
+            </Link>
           </p>
         </div>
       </div>
