@@ -53,6 +53,7 @@ const VALUES = [
 ];
 
 function Home() {
+  const { data: news } = useNews(3);
   return (
     <SiteLayout>
       {/* Hero */}
