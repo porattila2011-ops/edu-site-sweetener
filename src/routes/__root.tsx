@@ -84,7 +84,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "A Dr. Molnár István Egységes Gyógypedagógiai Módszertani Intézmény, Óvoda, Általános és Készségfejlesztő Iskola, Kollégium hivatalos honlapja — Hajdúböszörmény.",
       },
       { name: "author", content: "Dr. Molnár István EGYMI" },
-      { property: "og:title", content: "Dr. Molnár István EGYMI" },
+      { property: "og:title", content: "Dr. Molnár István EGYMI — Óvoda, Iskola, Kollégium" },
       {
         property: "og:description",
         content:
@@ -93,6 +93,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Dr. Molnár István EGYMI" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Dr. Molnár István EGYMI — Óvoda, Iskola, Kollégium" },
+      { name: "description", content: "Digital Study Space is a web application for accessing educational content." },
+      { property: "og:description", content: "Digital Study Space is a web application for accessing educational content." },
+      { name: "twitter:description", content: "Digital Study Space is a web application for accessing educational content." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4efb914a-2d0f-4c33-9824-51e7edfdce51/id-preview-561bfe8d--55cd1305-741a-4940-a041-e6a0d3a376b2.lovable.app-1781996427995.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/4efb914a-2d0f-4c33-9824-51e7edfdce51/id-preview-561bfe8d--55cd1305-741a-4940-a041-e6a0d3a376b2.lovable.app-1781996427995.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
