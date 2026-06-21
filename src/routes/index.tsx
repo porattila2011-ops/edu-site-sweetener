@@ -45,7 +45,7 @@ const SERVICES = [
 ];
 
 const VALUES = [
-  { icon: HeartHandshake, title: "Befogadás", text: "Minden gyermeket egyéni igényei szerint, türelemmel és szeretettel fogadunk." },
+  { icon: HeartHandshake, title: "\n", text: "\n" },
   { icon: Leaf, title: "Ökoiskola", text: "Az iskolakert és a fenntarthatóságra nevelés a mindennapjaink része." },
   { icon: Sun, title: "Boldog Iskola", text: "Olyan légkört teremtünk, ahol a gyermekek örömmel tanulnak és fejlődnek." },
 ];
