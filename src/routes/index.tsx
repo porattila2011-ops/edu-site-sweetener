@@ -15,7 +15,9 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Button } from "@/components/ui/button";
-import { NEWS, SITE } from "@/lib/site";
+import { SITE } from "@/lib/site";
+import { useNews } from "@/hooks/use-news";
+import { formatNewsDate } from "@/lib/news";
 import heroImg from "@/assets/hero.jpg";
 import gardenImg from "@/assets/garden.jpg";
 import classroomImg from "@/assets/classroom.jpg";
