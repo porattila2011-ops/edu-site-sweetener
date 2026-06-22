@@ -15,12 +15,10 @@ import {
 } from "lucide-react";
 import { SiteLayout } from "@/components/site-layout";
 import { Button } from "@/components/ui/button";
-import { SITE } from "@/lib/site";
 import { useNews } from "@/hooks/use-news";
+import { useContent } from "@/hooks/use-content";
+import { phoneToHref } from "@/lib/content";
 import { formatNewsDate } from "@/lib/news";
-import heroImg from "@/assets/hero.jpg";
-import gardenImg from "@/assets/garden.jpg";
-import classroomImg from "@/assets/classroom.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -54,6 +52,9 @@ const VALUES = [
 
 function Home() {
   const { data: news } = useNews(3);
+  const { c } = useContent();
+  const phone = c("site.phone");
+
   return (
     <SiteLayout>
       {/* Hero */}
@@ -61,15 +62,14 @@ function Home() {
         <div className="container-page grid items-center gap-10 py-12 md:py-20 lg:grid-cols-2 lg:gap-14">
           <div>
             <span className="inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-1.5 text-sm font-bold text-secondary-foreground">
-              <Sparkles className="h-4 w-4" /> Hajdúböszörmény · 1979 óta
+              <Sparkles className="h-4 w-4" /> {c("home.hero_badge")}
             </span>
             <h1 className="mt-5 text-balance text-4xl font-extrabold leading-[1.05] text-foreground md:text-6xl">
-              Ahol minden gyermek a saját ütemében{" "}
-              <span className="text-primary">virágozhat ki</span>
+              {c("home.hero_title")}{" "}
+              <span className="text-primary">{c("home.hero_highlight")}</span>
             </h1>
             <p className="mt-6 max-w-xl text-lg leading-relaxed text-muted-foreground">
-              A Dr. Molnár István EGYMI óvodája, általános és készségfejlesztő iskolája, valamint
-              kollégiuma befogadó, gyermekközpontú gyógypedagógiai környezetet kínál.
+              {c("home.hero_subtitle")}
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <Button asChild variant="hero" size="xl">
@@ -90,15 +90,15 @@ function Home() {
 
           <div className="relative">
             <img
-              src={heroImg}
+              src={c("home.hero_image")}
               alt="Mosolygó gyermekek és pedagógusok az iskola kertjében"
               width={1600}
               height={1000}
               className="aspect-[16/11] w-full rounded-3xl object-cover shadow-[var(--shadow-card)]"
             />
             <div className="absolute -bottom-6 -left-4 hidden rounded-2xl border border-border/60 bg-card px-5 py-4 shadow-[var(--shadow-card)] sm:block">
-              <p className="font-display text-3xl font-extrabold text-primary">45+ év</p>
-              <p className="text-xs font-bold text-muted-foreground">gyógypedagógiai tapasztalat</p>
+              <p className="font-display text-3xl font-extrabold text-primary">{c("home.stat_number")}</p>
+              <p className="text-xs font-bold text-muted-foreground">{c("home.stat_label")}</p>
             </div>
           </div>
         </div>
@@ -133,7 +133,7 @@ function Home() {
         <div className="container-page grid items-center gap-10 py-16 md:py-24 lg:grid-cols-2">
           <div className="grid grid-cols-2 gap-4">
             <img
-              src={gardenImg}
+              src={c("home.garden_image")}
               alt="Gyermekek az iskolakertben palántát ültetnek"
               width={1200}
               height={900}
@@ -141,7 +141,7 @@ function Home() {
               className="aspect-[3/4] w-full rounded-3xl object-cover shadow-[var(--shadow-soft)]"
             />
             <img
-              src={classroomImg}
+              src={c("home.classroom_image")}
               alt="Pedagógus segít egy gyermeknek a tanteremben"
               width={1200}
               height={900}
@@ -152,11 +152,10 @@ function Home() {
           <div>
             <p className="text-sm font-extrabold uppercase tracking-[0.18em] text-sun">Értékeink</p>
             <h2 className="mt-3 text-3xl font-extrabold text-foreground md:text-4xl">
-              Türelem, elfogadás és sok-sok öröm
+              {c("home.about_title")}
             </h2>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Hisszük, hogy minden gyermek képes fejlődni, ha a megfelelő figyelmet és környezetet
-              kapja. Gyógypedagógusaink egyénre szabott módszerekkel kísérik a tanulókat.
+              {c("home.about_text")}
             </p>
             <div className="mt-8 space-y-4">
               {VALUES.map((v) => (
@@ -222,10 +221,9 @@ function Home() {
         <div className="overflow-hidden rounded-[2rem] bg-primary px-7 py-12 text-primary-foreground shadow-[var(--shadow-card)] md:px-14 md:py-16">
           <div className="grid gap-8 lg:grid-cols-2 lg:items-center">
             <div>
-              <h2 className="text-3xl font-extrabold md:text-4xl">Kérdése van? Keressen minket!</h2>
+              <h2 className="text-3xl font-extrabold md:text-4xl">{c("home.cta_title")}</h2>
               <p className="mt-4 max-w-md text-primary-foreground/85">
-                Munkatársaink készséggel segítenek a beiratkozással, a szolgáltatásokkal és minden
-                egyéb kérdésével kapcsolatban.
+                {c("home.cta_text")}
               </p>
               <Button asChild variant="sun" size="xl" className="mt-7">
                 <Link to="/kapcsolat">
@@ -235,19 +233,19 @@ function Home() {
             </div>
             <div className="grid gap-3 text-sm font-semibold">
               <span className="flex items-center gap-3 rounded-2xl bg-primary-foreground/10 px-5 py-4">
-                <MapPin className="h-5 w-5" /> {SITE.address}
+                <MapPin className="h-5 w-5" /> {c("site.address")}
               </span>
               <a
-                href={SITE.phoneHref}
+                href={phoneToHref(phone)}
                 className="flex items-center gap-3 rounded-2xl bg-primary-foreground/10 px-5 py-4 transition-colors hover:bg-primary-foreground/20"
               >
-                <Phone className="h-5 w-5" /> {SITE.phone}
+                <Phone className="h-5 w-5" /> {phone}
               </a>
               <a
-                href={`mailto:${SITE.email}`}
+                href={`mailto:${c("site.email")}`}
                 className="flex items-center gap-3 rounded-2xl bg-primary-foreground/10 px-5 py-4 transition-colors hover:bg-primary-foreground/20"
               >
-                <Mail className="h-5 w-5" /> {SITE.email}
+                <Mail className="h-5 w-5" /> {c("site.email")}
               </a>
             </div>
           </div>
