@@ -1,12 +1,17 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
-import { NAV, SITE } from "@/lib/site";
+import { NAV } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
+import { phoneToHref } from "@/lib/content";
 import { cn } from "@/lib/utils";
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const { c } = useContent();
+  const phone = c("site.phone");
+  const phoneHref = phoneToHref(phone);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -46,10 +51,10 @@ export function SiteHeader() {
         </nav>
 
         <a
-          href={SITE.phoneHref}
+          href={phoneHref}
           className="hidden rounded-full bg-primary px-5 py-2.5 text-sm font-bold text-primary-foreground shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-0.5 md:inline-flex lg:ml-2"
         >
-          {SITE.phone}
+          {phone}
         </a>
 
         <button
@@ -84,10 +89,10 @@ export function SiteHeader() {
               );
             })}
             <a
-              href={SITE.phoneHref}
+              href={phoneHref}
               className="mt-2 rounded-xl bg-primary px-4 py-3 text-center text-base font-bold text-primary-foreground"
             >
-              {SITE.phone}
+              {phone}
             </a>
           </nav>
         </div>

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Building2, Users, Target, CalendarDays, IdCard, UserCog } from "lucide-react";
 import { SiteLayout, PageHero } from "@/components/site-layout";
-import { SITE } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
 
 export const Route = createFileRoute("/iskolankrol")({
   head: () => ({
@@ -19,13 +19,6 @@ export const Route = createFileRoute("/iskolankrol")({
   }),
   component: About,
 });
-
-const FACTS = [
-  { icon: IdCard, label: "OM azonosító", value: SITE.om },
-  { icon: UserCog, label: "Vezető", value: SITE.head },
-  { icon: CalendarDays, label: "Alapítás éve", value: SITE.founded },
-  { icon: Building2, label: "Székhely", value: "Hajdúböszörmény" },
-];
 
 const PILLARS = [
   {
@@ -46,6 +39,14 @@ const PILLARS = [
 ];
 
 function About() {
+  const { c } = useContent();
+  const facts = [
+    { icon: IdCard, label: "OM azonosító", value: c("site.om") },
+    { icon: UserCog, label: "Vezető", value: c("site.head") },
+    { icon: CalendarDays, label: "Alapítás éve", value: c("site.founded") },
+    { icon: Building2, label: "Székhely", value: "Hajdúböszörmény" },
+  ];
+
   return (
     <SiteLayout>
       <PageHero
@@ -57,21 +58,9 @@ function About() {
       <section className="container-page py-14 md:py-20">
         <div className="grid gap-12 lg:grid-cols-3">
           <div className="space-y-5 text-base leading-relaxed text-muted-foreground lg:col-span-2">
-            <p>
-              A <strong className="text-foreground">{SITE.fullName}</strong> {SITE.founded}-ben kezdte
-              meg működését. Az eltelt évtizedek során folyamatosan bővült feladatköre, hogy a
-              sajátos nevelési igényű gyermekek és fiatalok minél teljesebb körű ellátást kapjanak.
-            </p>
-            <p>
-              Intézményünk az óvodás kortól a készségfejlesztő iskoláig kíséri a tanulókat, kollégiumi
-              elhelyezéssel és önálló életvitelre felkészítő programokkal. Célunk, hogy minden gyermek
-              biztonságban, elfogadó közösségben, a saját ütemében fejlődhessen.
-            </p>
-            <p>
-              Ökoiskolaként és Boldog Iskolaként kiemelt figyelmet fordítunk a fenntarthatóságra
-              nevelésre és a gyermekek érzelmi jóllétére — az iskolakert, az állatbarát szemlélet és a
-              közösségi élmények mindennapjaink részei.
-            </p>
+            <p>{c("about.intro_p1")}</p>
+            <p>{c("about.intro_p2")}</p>
+            <p>{c("about.intro_p3")}</p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {PILLARS.map((p) => (
@@ -89,7 +78,7 @@ function About() {
           <aside className="h-fit rounded-3xl border border-border/60 bg-sidebar p-7 shadow-[var(--shadow-soft)]">
             <h2 className="font-display text-lg font-extrabold text-foreground">Intézményi adatok</h2>
             <ul className="mt-5 space-y-4">
-              {FACTS.map((f) => (
+              {facts.map((f) => (
                 <li key={f.label} className="flex items-center gap-4">
                   <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                     <f.icon className="h-5 w-5" />
@@ -103,7 +92,7 @@ function About() {
             </ul>
             <div className="mt-6 rounded-2xl bg-card p-4 text-sm text-muted-foreground">
               <p className="font-bold text-foreground">Cím</p>
-              <p className="mt-1">{SITE.address}</p>
+              <p className="mt-1">{c("site.address")}</p>
             </div>
           </aside>
         </div>

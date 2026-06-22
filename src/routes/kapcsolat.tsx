@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, Clock, IdCard } from "lucide-react";
 import { SiteLayout, PageHero } from "@/components/site-layout";
-import { SITE } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
+import { phoneToHref } from "@/lib/content";
 
 export const Route = createFileRoute("/kapcsolat")({
   head: () => ({
@@ -20,15 +21,18 @@ export const Route = createFileRoute("/kapcsolat")({
   component: Contact,
 });
 
-const ITEMS = [
-  { icon: MapPin, label: "Cím", value: SITE.address, href: undefined },
-  { icon: Phone, label: "Telefon", value: SITE.phone, href: SITE.phoneHref },
-  { icon: Mail, label: "E-mail", value: SITE.email, href: `mailto:${SITE.email}` },
-  { icon: IdCard, label: "OM azonosító", value: SITE.om, href: undefined },
-  { icon: Clock, label: "Ügyfélfogadás", value: "Hétfő–Péntek 8:00–16:00", href: undefined },
-];
-
 function Contact() {
+  const { c } = useContent();
+  const phone = c("site.phone");
+  const email = c("site.email");
+  const items = [
+    { icon: MapPin, label: "Cím", value: c("site.address"), href: undefined as string | undefined },
+    { icon: Phone, label: "Telefon", value: phone, href: phoneToHref(phone) },
+    { icon: Mail, label: "E-mail", value: email, href: `mailto:${email}` },
+    { icon: IdCard, label: "OM azonosító", value: c("site.om"), href: undefined as string | undefined },
+    { icon: Clock, label: "Ügyfélfogadás", value: c("site.office_hours"), href: undefined as string | undefined },
+  ];
+
   return (
     <SiteLayout>
       <PageHero
@@ -40,7 +44,7 @@ function Contact() {
         <div className="grid gap-10 lg:grid-cols-2">
           <div>
             <ul className="space-y-4">
-              {ITEMS.map((i) => (
+              {items.map((i) => (
                 <li
                   key={i.label}
                   className="flex items-center gap-4 rounded-2xl border border-border/60 bg-card p-5 shadow-[var(--shadow-soft)]"
