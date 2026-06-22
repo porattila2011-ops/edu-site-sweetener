@@ -76,6 +76,13 @@ export const CONTENT_SECTIONS: ContentSection[] = [
     label: "Iskolánkról oldal",
     fields: [
       {
+        key: "about.page_description",
+        label: "Oldal leírása",
+        type: "textarea",
+        default:
+          "Több mint négy évtizede nyújtunk gyógypedagógiai nevelést, oktatást és gondoskodást Hajdúböszörményben és térségében.",
+      },
+      {
         key: "about.intro_p1",
         label: "Bemutatkozás – 1. bekezdés",
         type: "textarea",
@@ -96,6 +103,35 @@ export const CONTENT_SECTIONS: ContentSection[] = [
         default:
           "Ökoiskolaként és Boldog Iskolaként kiemelt figyelmet fordítunk a fenntarthatóságra nevelésre és a gyermekek érzelmi jóllétére — az iskolakert, az állatbarát szemlélet és a közösségi élmények mindennapjaink részei.",
       },
+    ],
+  },
+  {
+    id: "hirek",
+    label: "Hírek oldal",
+    fields: [
+      { key: "hirek.page_description", label: "Oldal leírása", type: "textarea", default: "Friss tájékoztatók, események és fontos határidők diákjaink és szüleik számára." },
+    ],
+  },
+  {
+    id: "dokumentumtar",
+    label: "Dokumentumtár oldal",
+    fields: [
+      { key: "dokumentumtar.page_description", label: "Oldal leírása", type: "textarea", default: "Intézményünk hivatalos szabályzatai, munkatervei és nyomtatványai egy helyen." },
+    ],
+  },
+  {
+    id: "buszkesegeink",
+    label: "Büszkeségeink oldal",
+    fields: [
+      { key: "buszkesegeink.page_description", label: "Oldal leírása", type: "textarea", default: "Elismeréseink és kiemelt programjaink, amelyek a gyermekek fejlődését és jóllétét szolgálják." },
+    ],
+  },
+  {
+    id: "kapcsolat",
+    label: "Kapcsolat oldal",
+    fields: [
+      { key: "kapcsolat.page_title", label: "Oldal címe", type: "text", default: "Vegye fel velünk a kapcsolatot" },
+      { key: "kapcsolat.page_description", label: "Oldal leírása", type: "textarea", default: "Kérdésével, beiratkozással vagy szolgáltatásainkkal kapcsolatban szívesen segítünk." },
     ],
   },
 ];

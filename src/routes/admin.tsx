@@ -8,6 +8,7 @@ import { NewsAdmin } from "@/components/admin/news-admin";
 import { DocumentsAdmin } from "@/components/admin/documents-admin";
 import { ContentAdmin } from "@/components/admin/content-admin";
 import { AchievementsAdmin } from "@/components/admin/achievements-admin";
+import { AdminDashboard } from "@/components/admin/dashboard";
 import { toast } from "sonner";
 import { LogOut, ShieldCheck, Loader2 } from "lucide-react";
 
@@ -129,31 +130,77 @@ function AdminPage() {
         description="Itt szerkesztheted a hírek, dokumentumok, oldalszövegek, képek és büszkeségek tartalmát."
       />
       <section className="container-page py-12 md:py-16">
-        <div className="mb-8 flex justify-end">
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h2 className="font-display text-2xl font-extrabold text-foreground">Weboldal tartalma</h2>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Az alábbi füleken szerkesztheted az oldal összes tartalmát, képeit és dokumentumait.
+            </p>
+          </div>
           <Button variant="ghost" size="sm" onClick={handleSignOut}>
             <LogOut className="h-4 w-4" /> Kijelentkezés
           </Button>
         </div>
 
-        <Tabs defaultValue="news">
+        <Tabs defaultValue="dashboard" className="mt-8">
           <TabsList className="mb-8 flex h-auto flex-wrap justify-start gap-1">
-            <TabsTrigger value="news">Hírek</TabsTrigger>
-            <TabsTrigger value="documents">Dokumentumtár</TabsTrigger>
-            <TabsTrigger value="content">Szövegek és képek</TabsTrigger>
-            <TabsTrigger value="achievements">Büszkeségeink</TabsTrigger>
+            <TabsTrigger value="dashboard">📊 Áttekintés</TabsTrigger>
+            <TabsTrigger value="content">🎨 Szövegek & Képek</TabsTrigger>
+            <TabsTrigger value="news">📰 Hírek</TabsTrigger>
+            <TabsTrigger value="documents">📄 Dokumentumtár</TabsTrigger>
+            <TabsTrigger value="achievements">⭐ Büszkeségeink</TabsTrigger>
           </TabsList>
 
+          <TabsContent value="dashboard">
+            <AdminDashboard />
+          </TabsContent>
+
+          <TabsContent value="content" className="space-y-8">
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <div className="mb-6">
+                <h3 className="font-display text-lg font-extrabold text-foreground">Oldal szövegei és képei</h3>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Itt módosíthatod az egész weboldal szövegeit, képeit és minden tartalmi elemet. Szerkesszél egy szekción belül az összes szöveget, majd mentsd el az összes módosítást a lenti gombbal.
+                </p>
+              </div>
+              <ContentAdmin />
+            </div>
+          </TabsContent>
+
           <TabsContent value="news">
-            <NewsAdmin />
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-display text-lg font-extrabold text-foreground">Hírek szerkesztése</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Létrehozz új híreket, vagy szerkeszd és töröld a meglévőket. Ezek a hírek a Hírek oldalon és a kezdőlapon jelennek meg.
+              </p>
+              <div className="mt-6">
+                <NewsAdmin />
+              </div>
+            </div>
           </TabsContent>
+
           <TabsContent value="documents">
-            <DocumentsAdmin />
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-display text-lg font-extrabold text-foreground">Dokumentumtár szerkesztése</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Töltsd fel az intézmény dokumentumait (házirendek, szabályzatok, munkatervek stb.). Ezek a Dokumentumtár oldalon lesznek elérhetők.
+              </p>
+              <div className="mt-6">
+                <DocumentsAdmin />
+              </div>
+            </div>
           </TabsContent>
-          <TabsContent value="content">
-            <ContentAdmin />
-          </TabsContent>
+
           <TabsContent value="achievements">
-            <AchievementsAdmin />
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-display text-lg font-extrabold text-foreground">Büszkeségeink szerkesztése</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Szerkeszd meg az intézmény elismeréseit, programjait (Ökoiskola, Boldog Iskola stb.). Ezek a Büszkeségeink oldalon jelennek meg.
+              </p>
+              <div className="mt-6">
+                <AchievementsAdmin />
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
       </section>

@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 import { useNews } from "@/hooks/use-news";
+import { useContent } from "@/hooks/use-content";
 import { formatNewsDate } from "@/lib/news";
 
 export const Route = createFileRoute("/hirek")({
@@ -21,13 +22,14 @@ export const Route = createFileRoute("/hirek")({
 
 function News() {
   const { data: news, isLoading } = useNews();
+  const { c } = useContent();
 
   return (
     <SiteLayout>
       <PageHero
         eyebrow="Hírek"
         title="Iskolánk életéből"
-        description="Friss tájékoztatók, események és fontos határidők diákjaink és szüleik számára."
+        description={c("hirek.page_description")}
       />
       <section className="container-page py-14 md:py-20">
         {isLoading ? (

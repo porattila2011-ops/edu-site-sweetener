@@ -37,8 +37,8 @@ function Contact() {
     <SiteLayout>
       <PageHero
         eyebrow="Kapcsolat"
-        title="Vegye fel velünk a kapcsolatot"
-        description="Kérdésével, beiratkozással vagy szolgáltatásainkkal kapcsolatban szívesen segítünk."
+        title={c("kapcsolat.page_title")}
+        description={c("kapcsolat.page_description")}
       />
       <section className="container-page py-14 md:py-20">
         <div className="grid gap-10 lg:grid-cols-2">

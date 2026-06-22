@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 import { useAchievements } from "@/hooks/use-achievements";
+import { useContent } from "@/hooks/use-content";
 import { getAchievementIcon } from "@/lib/achievement-icons";
 
 export const Route = createFileRoute("/buszkesegeink")({
@@ -31,6 +32,7 @@ const DEFAULT_AWARDS = [
 
 function Pride() {
   const { data } = useAchievements();
+  const { c } = useContent();
   const awards: { title: string; description: string; icon: string }[] =
     data && data.length > 0
       ? data.map((a) => ({ title: a.title, description: a.description, icon: a.icon }))
@@ -41,7 +43,7 @@ function Pride() {
       <PageHero
         eyebrow="Büszkeségeink"
         title="Amire büszkék vagyunk"
-        description="Elismeréseink és kiemelt programjaink, amelyek a gyermekek fejlődését és jóllétét szolgálják."
+        description={c("buszkesegeink.page_description")}
       />
       <section className="container-page py-14 md:py-20">
         <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
