@@ -27,11 +27,24 @@ export const CONTENT_SECTIONS: ContentSection[] = [
     fields: [
       { key: "site.address", label: "Cím", type: "text", default: "4220 Hajdúböszörmény, Radnóti Miklós u. 5." },
       { key: "site.phone", label: "Telefonszám", type: "text", default: "+36 52 561 847" },
-      { key: "site.email", label: "E-mail cím", type: "text", default: "info@drmolnar.edu.hu" },
+      { key: "site.email", label: "E-mail cím (1.)", type: "text", default: "info@drmolnar.edu.hu" },
+      { key: "site.email2", label: "E-mail cím (2.)", type: "text", default: "intezet@ovisk-hboszormeny.edu.hu" },
       { key: "site.om", label: "OM azonosító", type: "text", default: "038512" },
       { key: "site.head", label: "Intézményvezető", type: "text", default: "Orosz Henrietta Mária" },
       { key: "site.founded", label: "Alapítás éve", type: "text", default: "1979" },
       { key: "site.office_hours", label: "Ügyfélfogadás", type: "text", default: "Hétfő–Péntek 8:00–16:00" },
+      { key: "site.leader_1_title", label: "1. vezető – beosztás", type: "text", default: "Főigazgató" },
+      { key: "site.leader_1_name", label: "1. vezető – név", type: "text", default: "Orosz Henrietta Mária" },
+      { key: "site.leader_1_phone", label: "1. vezető – telefon", type: "text", default: "", help: "Opcionális" },
+      { key: "site.leader_2_title", label: "2. vezető – beosztás", type: "text", default: "Főigazgató-helyettes" },
+      { key: "site.leader_2_name", label: "2. vezető – név", type: "text", default: "Pénzesné Kardos Andrea" },
+      { key: "site.leader_2_phone", label: "2. vezető – telefon", type: "text", default: "", help: "Opcionális" },
+      { key: "site.leader_3_title", label: "3. vezető – beosztás", type: "text", default: "Intézményegység vezető" },
+      { key: "site.leader_3_name", label: "3. vezető – név", type: "text", default: "Drénné Molnár Erika" },
+      { key: "site.leader_3_phone", label: "3. vezető – telefon", type: "text", default: "", help: "Opcionális" },
+      { key: "site.leader_4_title", label: "4. vezető – beosztás", type: "text", default: "Intézményegység vezető" },
+      { key: "site.leader_4_name", label: "4. vezető – név", type: "text", default: "Pór-Tóth Anita" },
+      { key: "site.leader_4_phone", label: "4. vezető – telefon", type: "text", default: "", help: "Opcionális" },
     ],
   },
   {
@@ -59,6 +72,12 @@ export const CONTENT_SECTIONS: ContentSection[] = [
         default:
           "Hisszük, hogy minden gyermek képes fejlődni, ha a megfelelő figyelmet és környezetet kapja. Gyógypedagógusaink egyénre szabott módszerekkel kísérik a tanulókat.",
       },
+      { key: "home.value_1_title", label: "1. érték – cím", type: "text", default: "Bázisiskola" },
+      { key: "home.value_1_text", label: "1. érték – szöveg", type: "textarea", default: "Bázisiskola" },
+      { key: "home.value_2_title", label: "2. érték – cím", type: "text", default: "Ökoiskola" },
+      { key: "home.value_2_text", label: "2. érték – szöveg", type: "textarea", default: "Az iskolakert és a fenntarthatóságra nevelés a mindennapjaink része." },
+      { key: "home.value_3_title", label: "3. érték – cím", type: "text", default: "Boldog Iskola" },
+      { key: "home.value_3_text", label: "3. érték – szöveg", type: "textarea", default: "Olyan légkört teremtünk, ahol a gyermekek örömmel tanulnak és fejlődnek." },
       { key: "home.garden_image", label: "Kép – iskolakert", type: "image", default: gardenImg },
       { key: "home.classroom_image", label: "Kép – tanterem", type: "image", default: classroomImg },
       { key: "home.cta_title", label: "Kapcsolat sáv – cím", type: "text", default: "Kérdése van? Keressen minket!" },
@@ -75,6 +94,13 @@ export const CONTENT_SECTIONS: ContentSection[] = [
     id: "about",
     label: "Iskolánkról oldal",
     fields: [
+      {
+        key: "about.page_description",
+        label: "Oldal leírása",
+        type: "textarea",
+        default:
+          "Több mint négy évtizede nyújtunk gyógypedagógiai nevelést, oktatást és gondoskodást Hajdúböszörményben és térségében.",
+      },
       {
         key: "about.intro_p1",
         label: "Bemutatkozás – 1. bekezdés",
@@ -96,6 +122,35 @@ export const CONTENT_SECTIONS: ContentSection[] = [
         default:
           "Ökoiskolaként és Boldog Iskolaként kiemelt figyelmet fordítunk a fenntarthatóságra nevelésre és a gyermekek érzelmi jóllétére — az iskolakert, az állatbarát szemlélet és a közösségi élmények mindennapjaink részei.",
       },
+    ],
+  },
+  {
+    id: "hirek",
+    label: "Hírek oldal",
+    fields: [
+      { key: "hirek.page_description", label: "Oldal leírása", type: "textarea", default: "Friss tájékoztatók, események és fontos határidők diákjaink és szüleik számára." },
+    ],
+  },
+  {
+    id: "dokumentumtar",
+    label: "Dokumentumtár oldal",
+    fields: [
+      { key: "dokumentumtar.page_description", label: "Oldal leírása", type: "textarea", default: "Intézményünk hivatalos szabályzatai, munkatervei és nyomtatványai egy helyen." },
+    ],
+  },
+  {
+    id: "buszkesegeink",
+    label: "Büszkeségeink oldal",
+    fields: [
+      { key: "buszkesegeink.page_description", label: "Oldal leírása", type: "textarea", default: "Elismeréseink és kiemelt programjaink, amelyek a gyermekek fejlődését és jóllétét szolgálják." },
+    ],
+  },
+  {
+    id: "kapcsolat",
+    label: "Kapcsolat oldal",
+    fields: [
+      { key: "kapcsolat.page_title", label: "Oldal címe", type: "text", default: "Vegye fel velünk a kapcsolatot" },
+      { key: "kapcsolat.page_description", label: "Oldal leírása", type: "textarea", default: "Kérdésével, beiratkozással vagy szolgáltatásainkkal kapcsolatban szívesen segítünk." },
     ],
   },
 ];

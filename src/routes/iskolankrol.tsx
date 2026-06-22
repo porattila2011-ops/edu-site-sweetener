@@ -52,7 +52,7 @@ function About() {
       <PageHero
         eyebrow="Iskolánkról"
         title="Intézményünk bemutatása"
-        description="Több mint négy évtizede nyújtunk gyógypedagógiai nevelést, oktatást és gondoskodást Hajdúböszörményben és térségében."
+        description={c("about.page_description")}
       />
 
       <section className="container-page py-14 md:py-20">

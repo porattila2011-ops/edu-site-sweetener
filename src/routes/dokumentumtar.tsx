@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { FileText, Download } from "lucide-react";
 import { SiteLayout, PageHero } from "@/components/site-layout";
 import { useDocuments, type DocumentItem } from "@/hooks/use-documents";
+import { useContent } from "@/hooks/use-content";
 import { DOCUMENTS } from "@/lib/site";
 
 export const Route = createFileRoute("/dokumentumtar")({
@@ -23,6 +24,7 @@ export const Route = createFileRoute("/dokumentumtar")({
 
 function Documents() {
   const { data } = useDocuments();
+  const { c } = useContent();
 
   const groups: { category: string; items: { title: string; url?: string }[] }[] =
     data && data.length > 0
@@ -48,7 +50,7 @@ function Documents() {
       <PageHero
         eyebrow="Dokumentumtár"
         title="Letölthető dokumentumok"
-        description="Intézményünk hivatalos szabályzatai, munkatervei és nyomtatványai egy helyen."
+        description={c("dokumentumtar.page_description")}
       />
       <section className="container-page py-14 md:py-20">
         <div className="space-y-12">
