@@ -169,6 +169,9 @@ function Home() {
                   </div>
                 </div>
               ))}
+              <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-[var(--shadow-soft)]">
+                <p className="text-sm font-bold text-foreground">bázisiskola</p>
+              </div>
             </div>
           </div>
         </div>
