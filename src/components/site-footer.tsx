@@ -1,8 +1,12 @@
 import { Link } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, GraduationCap } from "lucide-react";
 import { NAV, SITE } from "@/lib/site";
+import { useContent } from "@/hooks/use-content";
+import { phoneToHref } from "@/lib/content";
 
 export function SiteFooter() {
+  const { c } = useContent();
+  const phone = c("site.phone");
   return (
     <footer className="mt-24 border-t border-border/60 bg-sidebar">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
