@@ -59,6 +59,12 @@ export const CONTENT_SECTIONS: ContentSection[] = [
         default:
           "Hisszük, hogy minden gyermek képes fejlődni, ha a megfelelő figyelmet és környezetet kapja. Gyógypedagógusaink egyénre szabott módszerekkel kísérik a tanulókat.",
       },
+      { key: "home.value_1_title", label: "1. érték – cím", type: "text", default: "Bázisiskola" },
+      { key: "home.value_1_text", label: "1. érték – szöveg", type: "textarea", default: "Bázisiskola" },
+      { key: "home.value_2_title", label: "2. érték – cím", type: "text", default: "Ökoiskola" },
+      { key: "home.value_2_text", label: "2. érték – szöveg", type: "textarea", default: "Az iskolakert és a fenntarthatóságra nevelés a mindennapjaink része." },
+      { key: "home.value_3_title", label: "3. érték – cím", type: "text", default: "Boldog Iskola" },
+      { key: "home.value_3_text", label: "3. érték – szöveg", type: "textarea", default: "Olyan légkört teremtünk, ahol a gyermekek örömmel tanulnak és fejlődnek." },
       { key: "home.garden_image", label: "Kép – iskolakert", type: "image", default: gardenImg },
       { key: "home.classroom_image", label: "Kép – tanterem", type: "image", default: classroomImg },
       { key: "home.cta_title", label: "Kapcsolat sáv – cím", type: "text", default: "Kérdése van? Keressen minket!" },

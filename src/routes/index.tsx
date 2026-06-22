@@ -44,16 +44,18 @@ const SERVICES = [
   { icon: HomeIcon, title: "Kollégium", text: "Biztonságos, családias bentlakásos otthon a tanulóinknak." },
 ];
 
-const VALUES = [
-  { icon: HeartHandshake, title: "Bázisiskola", text: "Bázisiskola" },
-  { icon: Leaf, title: "Ökoiskola", text: "Az iskolakert és a fenntarthatóságra nevelés a mindennapjaink része." },
-  { icon: Sun, title: "Boldog Iskola", text: "Olyan légkört teremtünk, ahol a gyermekek örömmel tanulnak és fejlődnek." },
-];
+const VALUE_ICONS = [HeartHandshake, Leaf, Sun];
 
 function Home() {
   const { data: news } = useNews(3);
   const { c } = useContent();
   const phone = c("site.phone");
+
+  const VALUES = [
+    { icon: VALUE_ICONS[0], title: c("home.value_1_title"), text: c("home.value_1_text") },
+    { icon: VALUE_ICONS[1], title: c("home.value_2_title"), text: c("home.value_2_text") },
+    { icon: VALUE_ICONS[2], title: c("home.value_3_title"), text: c("home.value_3_text") },
+  ];
 
   return (
     <SiteLayout>

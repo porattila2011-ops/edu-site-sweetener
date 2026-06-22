@@ -8,7 +8,6 @@ import { NewsAdmin } from "@/components/admin/news-admin";
 import { DocumentsAdmin } from "@/components/admin/documents-admin";
 import { ContentAdmin } from "@/components/admin/content-admin";
 import { AchievementsAdmin } from "@/components/admin/achievements-admin";
-import { AdminDashboard } from "@/components/admin/dashboard";
 import { toast } from "sonner";
 import { LogOut, ShieldCheck, Loader2 } from "lucide-react";
 
@@ -142,18 +141,13 @@ function AdminPage() {
           </Button>
         </div>
 
-        <Tabs defaultValue="dashboard" className="mt-8">
+        <Tabs defaultValue="content" className="mt-8">
           <TabsList className="mb-8 flex h-auto flex-wrap justify-start gap-1">
-            <TabsTrigger value="dashboard">📊 Áttekintés</TabsTrigger>
             <TabsTrigger value="content">🎨 Szövegek & Képek</TabsTrigger>
             <TabsTrigger value="news">📰 Hírek</TabsTrigger>
             <TabsTrigger value="documents">📄 Dokumentumtár</TabsTrigger>
             <TabsTrigger value="achievements">⭐ Büszkeségeink</TabsTrigger>
           </TabsList>
-
-          <TabsContent value="dashboard">
-            <AdminDashboard />
-          </TabsContent>
 
           <TabsContent value="content" className="space-y-8">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
