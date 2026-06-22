@@ -31,7 +31,10 @@ const DEFAULT_AWARDS = [
 
 function Pride() {
   const { data } = useAchievements();
-  const awards = data && data.length > 0 ? data : DEFAULT_AWARDS;
+  const awards: { title: string; description: string; icon: string }[] =
+    data && data.length > 0
+      ? data.map((a) => ({ title: a.title, description: a.description, icon: a.icon }))
+      : DEFAULT_AWARDS;
 
   return (
     <SiteLayout>
