@@ -45,7 +45,7 @@ const SERVICES = [
 ];
 
 const VALUES = [
-  { icon: HeartHandshake, title: "\n", text: "\n" },
+  { icon: HeartHandshake, title: "Bázisiskola", text: "Bázisiskola" },
   { icon: Leaf, title: "Ökoiskola", text: "Az iskolakert és a fenntarthatóságra nevelés a mindennapjaink része." },
   { icon: Sun, title: "Boldog Iskola", text: "Olyan légkört teremtünk, ahol a gyermekek örömmel tanulnak és fejlődnek." },
 ];
@@ -169,9 +169,6 @@ function Home() {
                   </div>
                 </div>
               ))}
-              <div className="rounded-2xl border border-border/60 bg-card p-4 shadow-[var(--shadow-soft)]">
-                <p className="text-sm font-bold text-foreground">bázisiskola</p>
-              </div>
             </div>
           </div>
         </div>
