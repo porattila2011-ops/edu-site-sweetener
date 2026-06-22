@@ -21,7 +21,7 @@ export function SiteFooter() {
             {SITE.fullName}
           </p>
           <p className="mt-3 text-xs font-semibold text-muted-foreground">
-            OM azonosító: {SITE.om} · Alapítva: {SITE.founded}
+            OM azonosító: {c("site.om")} · Alapítva: {c("site.founded")}
           </p>
         </div>
 
@@ -50,18 +50,18 @@ export function SiteFooter() {
           <ul className="mt-4 space-y-3 text-sm text-muted-foreground">
             <li className="flex gap-2.5">
               <MapPin className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <span>{SITE.address}</span>
+              <span>{c("site.address")}</span>
             </li>
             <li className="flex gap-2.5">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <a href={SITE.phoneHref} className="hover:text-primary">
-                {SITE.phone}
+              <a href={phoneToHref(phone)} className="hover:text-primary">
+                {phone}
               </a>
             </li>
             <li className="flex gap-2.5">
               <Mail className="mt-0.5 h-4 w-4 shrink-0 text-primary" />
-              <a href={`mailto:${SITE.email}`} className="hover:text-primary">
-                {SITE.email}
+              <a href={`mailto:${c("site.email")}`} className="hover:text-primary">
+                {c("site.email")}
               </a>
             </li>
           </ul>
