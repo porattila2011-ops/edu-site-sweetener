@@ -46,7 +46,7 @@ function Pride() {
             const Icon = getAchievementIcon(a.icon);
             return (
               <div
-                key={"id" in a ? a.id : `${a.title}-${idx}`}
+                key={`${a.title}-${idx}`}
                 className="rounded-3xl border border-border/60 bg-card p-7 shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-1"
               >
                 <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-leaf/15 text-leaf">
