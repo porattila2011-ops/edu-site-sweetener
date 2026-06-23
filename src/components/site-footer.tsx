@@ -150,7 +150,7 @@ Dr. Molnár István EGYMI </span> </div>
     </div>
   </div>
 </footer>
-```
+
 
 );
 }
