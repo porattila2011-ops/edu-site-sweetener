@@ -20,23 +20,7 @@ export const Route = createFileRoute("/iskolankrol")({
   component: About,
 });
 
-const PILLARS = [
-  {
-    icon: Users,
-    title: "Egyénre szabott fejlesztés",
-    text: "Gyógypedagógusaink, konduktoraink és pszichológusaink minden gyermeket a saját képességeihez igazított programmal kísérnek.",
-  },
-  {
-    icon: Target,
-    title: "Módszertani központ",
-    text: "Egységes Gyógypedagógiai Módszertani Intézményként utazó gyógypedagógusi és konduktori hálózatot is működtetünk.",
-  },
-  {
-    icon: Building2,
-    title: "Tagintézmény",
-    text: "A Kalkuttai Teréz Anya Tagintézmény tovább bővíti az ellátható gyermekek és szolgáltatások körét.",
-  },
-];
+const PILLAR_ICONS = [Users, Target, Building2];
 
 function About() {
   const { c } = useContent();
@@ -63,13 +47,13 @@ function About() {
             <p>{c("about.intro_p3")}</p>
 
             <div className="mt-8 grid gap-4 sm:grid-cols-3">
-              {PILLARS.map((p) => (
-                <div key={p.title} className="rounded-2xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)]">
+              {PILLAR_ICONS.map((Icon, i) => (
+                <div key={i} className="rounded-2xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)]">
                   <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-secondary-foreground">
-                    <p.icon className="h-5 w-5" />
+                    <Icon className="h-5 w-5" />
                   </span>
-                  <h3 className="mt-4 font-display text-base font-extrabold text-foreground">{p.title}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground">{p.text}</p>
+                  <h3 className="mt-4 font-display text-base font-extrabold text-foreground">{c(`about.pillar_${i + 1}_title`)}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground">{c(`about.pillar_${i + 1}_text`)}</p>
                 </div>
               ))}
             </div>

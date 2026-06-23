@@ -122,6 +122,45 @@ export const CONTENT_SECTIONS: ContentSection[] = [
         default:
           "Ökoiskolaként és Boldog Iskolaként kiemelt figyelmet fordítunk a fenntarthatóságra nevelésre és a gyermekek érzelmi jóllétére — az iskolakert, az állatbarát szemlélet és a közösségi élmények mindennapjaink részei.",
       },
+      {
+        key: "about.pillar_1_title",
+        label: "1. téglalap – cím",
+        type: "text",
+        default: "Egyénre szabott fejlesztés",
+      },
+      {
+        key: "about.pillar_1_text",
+        label: "1. téglalap – szöveg",
+        type: "textarea",
+        default:
+          "Gyógypedagógusaink, konduktoraink és pszichológusaink minden gyermeket a saját képességeihez igazított programmal kísérnek.",
+      },
+      {
+        key: "about.pillar_2_title",
+        label: "2. téglalap – cím",
+        type: "text",
+        default: "Módszertani központ",
+      },
+      {
+        key: "about.pillar_2_text",
+        label: "2. téglalap – szöveg",
+        type: "textarea",
+        default:
+          "Egységes Gyógypedagógiai Módszertani Intézményként utazó gyógypedagógusi és konduktori hálózatot is működtetünk.",
+      },
+      {
+        key: "about.pillar_3_title",
+        label: "3. téglalap – cím",
+        type: "text",
+        default: "Tagintézmény",
+      },
+      {
+        key: "about.pillar_3_text",
+        label: "3. téglalap – szöveg",
+        type: "textarea",
+        default:
+          "A Kalkuttai Teréz Anya Tagintézmény tovább bővíti az ellátható gyermekek és szolgáltatások körét.",
+      },
     ],
   },
   {

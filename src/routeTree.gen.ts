@@ -13,6 +13,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
 import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
 import { Route as HirekRouteImport } from './routes/hirek'
+import { Route as GaleriaRouteImport } from './routes/galeria'
 import { Route as DokumentumtarRouteImport } from './routes/dokumentumtar'
 import { Route as BuszkesegeinkRouteImport } from './routes/buszkesegeink'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -37,6 +38,11 @@ const IskolankrolRoute = IskolankrolRouteImport.update({
 const HirekRoute = HirekRouteImport.update({
   id: '/hirek',
   path: '/hirek',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GaleriaRoute = GaleriaRouteImport.update({
+  id: '/galeria',
+  path: '/galeria',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DokumentumtarRoute = DokumentumtarRouteImport.update({
@@ -71,6 +77,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
+  '/galeria': typeof GaleriaRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
   '/kapcsolat': typeof KapcsolatRoute
@@ -82,6 +89,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
+  '/galeria': typeof GaleriaRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
   '/kapcsolat': typeof KapcsolatRoute
@@ -94,6 +102,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
+  '/galeria': typeof GaleriaRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
   '/kapcsolat': typeof KapcsolatRoute
@@ -107,6 +116,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buszkesegeink'
     | '/dokumentumtar'
+    | '/galeria'
     | '/hirek'
     | '/iskolankrol'
     | '/kapcsolat'
@@ -118,6 +128,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buszkesegeink'
     | '/dokumentumtar'
+    | '/galeria'
     | '/hirek'
     | '/iskolankrol'
     | '/kapcsolat'
@@ -129,6 +140,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buszkesegeink'
     | '/dokumentumtar'
+    | '/galeria'
     | '/hirek'
     | '/iskolankrol'
     | '/kapcsolat'
@@ -141,6 +153,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BuszkesegeinkRoute: typeof BuszkesegeinkRoute
   DokumentumtarRoute: typeof DokumentumtarRoute
+  GaleriaRoute: typeof GaleriaRoute
   HirekRoute: typeof HirekRoute
   IskolankrolRoute: typeof IskolankrolRoute
   KapcsolatRoute: typeof KapcsolatRoute
@@ -175,6 +188,13 @@ declare module '@tanstack/react-router' {
       path: '/hirek'
       fullPath: '/hirek'
       preLoaderRoute: typeof HirekRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/galeria': {
+      id: '/galeria'
+      path: '/galeria'
+      fullPath: '/galeria'
+      preLoaderRoute: typeof GaleriaRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dokumentumtar': {
@@ -221,6 +241,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BuszkesegeinkRoute: BuszkesegeinkRoute,
   DokumentumtarRoute: DokumentumtarRoute,
+  GaleriaRoute: GaleriaRoute,
   HirekRoute: HirekRoute,
   IskolankrolRoute: IskolankrolRoute,
   KapcsolatRoute: KapcsolatRoute,

@@ -218,20 +218,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Wordbox */}
-      <section className="container-page py-16 md:py-24">
-        <div className="max-w-2xl">
-          <h2 className="text-3xl font-extrabold text-foreground md:text-4xl">Szöveges mező</h2>
-        </div>
-        <div className="mt-8 rounded-2xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)]">
-          <textarea
-            placeholder="Szöveg beírása..."
-            className="w-full rounded-lg border border-border bg-background p-4 text-foreground placeholder-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-            rows={6}
-          />
-        </div>
-      </section>
-
       {/* Contact CTA */}
       <section className="container-page pb-8">
         <div className="overflow-hidden rounded-[2rem] bg-primary px-7 py-12 text-primary-foreground shadow-[var(--shadow-card)] md:px-14 md:py-16">
