@@ -9,7 +9,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
-import { Loader2, X, Save } from "lucide-react";
+import { Loader2, X, Save, Image as ImageIcon } from "lucide-react";
+import { ImagePicker } from "./image-picker";
 
 export function ContentAdmin() {
   const queryClient = useQueryClient();
@@ -17,6 +18,7 @@ export function ContentAdmin() {
   const [values, setValues] = useState<Record<string, string>>({});
   const [saving, setSaving] = useState(false);
   const [uploadingKey, setUploadingKey] = useState<string | null>(null);
+  const [pickerOpen, setPickerOpen] = useState<string | null>(null);
 
   useEffect(() => {
     if (isLoading) return;
@@ -115,17 +117,50 @@ export function ContentAdmin() {
                         </button>
                       </div>
                     )}
-                    <Input
-                      id={field.key}
-                      type="file"
-                      accept="image/*"
-                      onChange={(e) => handleImageUpload(field, e)}
-                      disabled={uploadingKey === field.key}
-                    />
-                    {uploadingKey === field.key && (
-                      <p className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Loader2 className="h-4 w-4 animate-spin" /> Feltöltés…
-                      </p>
+                    <div className="flex gap-2">
+                      <div className="flex-1">
+                        <Input
+                          id={field.key}
+                          type="file"
+                          accept="image/*"
+                          onChange={(e) => handleImageUpload(field, e)}
+                          disabled={uploadingKey === field.key}
+                        />
+                        {uploadingKey === field.key && (
+                          <p className="mt-2 flex items-center gap-2 text-sm text-muted-foreground">
+                            <Loader2 className="h-4 w-4 animate-spin" /> Feltöltés…
+                          </p>
+                        )}
+                      </div>
+                      <Button
+                        type="button"
+                        variant="outline"
+                        size="sm"
+                        onClick={() => setPickerOpen(field.key)}
+                        className="mt-auto"
+                      >
+                        <ImageIcon className="h-4 w-4" /> Galéria
+                      </Button>
+                    </div>
+
+                    {pickerOpen === field.key && (
+                      <div className="rounded-lg border border-border/60 bg-card p-4">
+                        <div className="mb-4 flex items-center justify-between">
+                          <h4 className="font-semibold text-foreground">Kép kiválasztása</h4>
+                          <button
+                            type="button"
+                            onClick={() => setPickerOpen(null)}
+                            className="text-muted-foreground hover:text-foreground"
+                          >
+                            <X className="h-4 w-4" />
+                          </button>
+                        </div>
+                        <ImagePicker
+                          value={values[field.key] ?? ""}
+                          onChange={(url) => setValue(field.key, url)}
+                          onClose={() => setPickerOpen(null)}
+                        />
+                      </div>
                     )}
                   </div>
                 )}

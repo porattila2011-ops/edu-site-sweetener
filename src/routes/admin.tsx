@@ -8,6 +8,8 @@ import { NewsAdmin } from "@/components/admin/news-admin";
 import { DocumentsAdmin } from "@/components/admin/documents-admin";
 import { ContentAdmin } from "@/components/admin/content-admin";
 import { AchievementsAdmin } from "@/components/admin/achievements-admin";
+import { GalleryAdmin } from "@/components/admin/gallery-admin";
+import { AdminUsers } from "@/components/admin/admin-users";
 import { toast } from "sonner";
 import { LogOut, ShieldCheck, Loader2 } from "lucide-react";
 
@@ -144,9 +146,11 @@ function AdminPage() {
         <Tabs defaultValue="content" className="mt-8">
           <TabsList className="mb-8 flex h-auto flex-wrap justify-start gap-1">
             <TabsTrigger value="content">🎨 Szövegek & Képek</TabsTrigger>
+            <TabsTrigger value="gallery">🖼️ Galéria</TabsTrigger>
             <TabsTrigger value="news">📰 Hírek</TabsTrigger>
             <TabsTrigger value="documents">📄 Dokumentumtár</TabsTrigger>
             <TabsTrigger value="achievements">⭐ Büszkeségeink</TabsTrigger>
+            <TabsTrigger value="users">👥 Adminisztrátorok</TabsTrigger>
           </TabsList>
 
           <TabsContent value="content" className="space-y-8">
@@ -158,6 +162,18 @@ function AdminPage() {
                 </p>
               </div>
               <ContentAdmin />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="gallery">
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-display text-lg font-extrabold text-foreground">Galéria szerkesztése</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Hozz létre mappákat, töltsd fel képeket és szervezd őket. Ezek a képek felhasználhatók a weboldal bárhol.
+              </p>
+              <div className="mt-6">
+                <GalleryAdmin />
+              </div>
             </div>
           </TabsContent>
 
@@ -193,6 +209,18 @@ function AdminPage() {
               </p>
               <div className="mt-6">
                 <AchievementsAdmin />
+              </div>
+            </div>
+          </TabsContent>
+
+          <TabsContent value="users">
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <h3 className="font-display text-lg font-extrabold text-foreground">Adminisztrátorok kezelése</h3>
+              <p className="mt-1 text-sm text-muted-foreground">
+                Adj admin hozzáférést más felhasználóknak, hogy ők is szerkeszthessék a weboldalt.
+              </p>
+              <div className="mt-6">
+                <AdminUsers />
               </div>
             </div>
           </TabsContent>

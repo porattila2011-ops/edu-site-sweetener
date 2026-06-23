@@ -15,6 +15,7 @@ export const NAV = [
   { label: "Kezdőlap", to: "/" },
   { label: "Iskolánkról", to: "/iskolankrol" },
   { label: "Hírek", to: "/hirek" },
+  { label: "Galéria", to: "/galeria" },
   { label: "Dokumentumtár", to: "/dokumentumtar" },
   { label: "Büszkeségeink", to: "/buszkesegeink" },
   { label: "Kapcsolat", to: "/kapcsolat" },
