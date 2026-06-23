@@ -42,35 +42,32 @@ export function GalleryFolderContent({ folderId }: { folderId: string }) {
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-border/60 border-dashed bg-background p-6">
-        <div className="flex flex-col gap-4">
-          <div className="flex gap-2">
-            <Input
-              placeholder="Kép neve (opcionális)"
-              value={imageName}
-              onChange={(e) => setImageName(e.target.value)}
-              className="flex-1"
-            />
-            <Button
-              variant="hero"
-              size="sm"
-              onClick={() => fileInputRef.current?.click()}
-              disabled={uploadImage.isPending}
-            >
-              <Upload className="h-4 w-4" /> Feltöltés
-            </Button>
-          </div>
-          <input
-            ref={fileInputRef}
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) handleFileSelect(file);
-            }}
-            className="hidden"
+        <div className="flex gap-2">
+          <Input
+            placeholder="Kép neve (opcionális)"
+            value={imageName}
+            onChange={(e) => setImageName(e.target.value)}
+            className="flex-1"
           />
-          <p className="text-xs text-muted-foreground">Támogatott formátumok: JPG, PNG, GIF, WebP</p>
+          <Button
+            variant="hero"
+            size="sm"
+            onClick={() => fileInputRef.current?.click()}
+            disabled={uploadImage.isPending}
+          >
+            <Upload className="h-4 w-4" /> Feltöltés
+          </Button>
         </div>
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={(e) => {
+            const file = e.target.files?.[0];
+            if (file) handleFileSelect(file);
+          }}
+          className="hidden"
+        />
       </div>
 
       {imageList.length === 0 ? (

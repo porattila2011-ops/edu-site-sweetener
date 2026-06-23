@@ -70,13 +70,7 @@ export function AdminUsers() {
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-border/60 bg-background p-4">
-        <h4 className="font-display text-sm font-extrabold text-foreground">
-          Admin hozzáférés megadása
-        </h4>
-        <p className="mt-1 text-xs text-muted-foreground">
-          Írj be egy e-mail címet ahhoz, hogy admin hozzáférést adj neki.
-        </p>
-        <div className="mt-3 flex gap-2">
+        <div className="flex gap-2">
           <Input
             placeholder="felhasználó@email.com"
             value={email}

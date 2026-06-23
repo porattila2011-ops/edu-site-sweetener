@@ -33,8 +33,7 @@ export function GalleryAdmin() {
   return (
     <div className="space-y-6">
       <div className="rounded-2xl border border-border/60 bg-background p-4">
-        <h4 className="font-display text-sm font-extrabold text-foreground">Új mappa létrehozása</h4>
-        <div className="mt-3 flex gap-2">
+        <div className="flex gap-2">
           <Input
             placeholder="Mappa neve (pl. 'Rendezvények', 'Diákok')"
             value={newFolderName}

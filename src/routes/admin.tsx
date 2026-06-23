@@ -132,12 +132,6 @@ function AdminPage() {
       />
       <section className="container-page py-12 md:py-16">
         <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h2 className="font-display text-2xl font-extrabold text-foreground">Weboldal tartalma</h2>
-            <p className="mt-1 text-sm text-muted-foreground">
-              Az alábbi füleken szerkesztheted az oldal összes tartalmát, képeit és dokumentumait.
-            </p>
-          </div>
           <Button variant="ghost" size="sm" onClick={handleSignOut}>
             <LogOut className="h-4 w-4" /> Kijelentkezés
           </Button>
@@ -155,73 +149,37 @@ function AdminPage() {
 
           <TabsContent value="content" className="space-y-8">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <div className="mb-6">
-                <h3 className="font-display text-lg font-extrabold text-foreground">Oldal szövegei és képei</h3>
-                <p className="mt-1 text-sm text-muted-foreground">
-                  Itt módosíthatod az egész weboldal szövegeit, képeit és minden tartalmi elemet. Szerkesszél egy szekción belül az összes szöveget, majd mentsd el az összes módosítást a lenti gombbal.
-                </p>
-              </div>
               <ContentAdmin />
             </div>
           </TabsContent>
 
           <TabsContent value="gallery">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-display text-lg font-extrabold text-foreground">Galéria szerkesztése</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Hozz létre mappákat, töltsd fel képeket és szervezd őket. Ezek a képek felhasználhatók a weboldal bárhol.
-              </p>
-              <div className="mt-6">
-                <GalleryAdmin />
-              </div>
+              <GalleryAdmin />
             </div>
           </TabsContent>
 
           <TabsContent value="news">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-display text-lg font-extrabold text-foreground">Hírek szerkesztése</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Létrehozz új híreket, vagy szerkeszd és töröld a meglévőket. Ezek a hírek a Hírek oldalon és a kezdőlapon jelennek meg.
-              </p>
-              <div className="mt-6">
-                <NewsAdmin />
-              </div>
+              <NewsAdmin />
             </div>
           </TabsContent>
 
           <TabsContent value="documents">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-display text-lg font-extrabold text-foreground">Dokumentumtár szerkesztése</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Töltsd fel az intézmény dokumentumait (házirendek, szabályzatok, munkatervek stb.). Ezek a Dokumentumtár oldalon lesznek elérhetők.
-              </p>
-              <div className="mt-6">
-                <DocumentsAdmin />
-              </div>
+              <DocumentsAdmin />
             </div>
           </TabsContent>
 
           <TabsContent value="achievements">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-display text-lg font-extrabold text-foreground">Büszkeségeink szerkesztése</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Szerkeszd meg az intézmény elismeréseit, programjait (Ökoiskola, Boldog Iskola stb.). Ezek a Büszkeségeink oldalon jelennek meg.
-              </p>
-              <div className="mt-6">
-                <AchievementsAdmin />
-              </div>
+              <AchievementsAdmin />
             </div>
           </TabsContent>
 
           <TabsContent value="users">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
-              <h3 className="font-display text-lg font-extrabold text-foreground">Adminisztrátorok kezelése</h3>
-              <p className="mt-1 text-sm text-muted-foreground">
-                Adj admin hozzáférést más felhasználóknak, hogy ők is szerkeszthessék a weboldalt.
-              </p>
-              <div className="mt-6">
-                <AdminUsers />
-              </div>
+              <AdminUsers />
             </div>
           </TabsContent>
         </Tabs>
