@@ -2,7 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { NewsItem } from "@/lib/news";
 
-const COLUMNS = "id,title,excerpt,tag,image_url,published_at";
+const COLUMNS = "id,title,excerpt,tag,image_url,published_at,link_url";
 
 export function useNews(limit?: number) {
   return useQuery({
