@@ -14,6 +14,7 @@ import { Route as KapcsolatRouteImport } from './routes/kapcsolat'
 import { Route as IskolankrolRouteImport } from './routes/iskolankrol'
 import { Route as HirekRouteImport } from './routes/hirek'
 import { Route as GaleriaRouteImport } from './routes/galeria'
+import { Route as EfopRouteImport } from './routes/efop'
 import { Route as DokumentumtarRouteImport } from './routes/dokumentumtar'
 import { Route as BuszkesegeinkRouteImport } from './routes/buszkesegeink'
 import { Route as AuthRouteImport } from './routes/auth'
@@ -43,6 +44,11 @@ const HirekRoute = HirekRouteImport.update({
 const GaleriaRoute = GaleriaRouteImport.update({
   id: '/galeria',
   path: '/galeria',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EfopRoute = EfopRouteImport.update({
+  id: '/efop',
+  path: '/efop',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DokumentumtarRoute = DokumentumtarRouteImport.update({
@@ -77,6 +83,7 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
+  '/efop': typeof EfopRoute
   '/galeria': typeof GaleriaRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
@@ -89,6 +96,7 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
+  '/efop': typeof EfopRoute
   '/galeria': typeof GaleriaRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
@@ -102,6 +110,7 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/buszkesegeink': typeof BuszkesegeinkRoute
   '/dokumentumtar': typeof DokumentumtarRoute
+  '/efop': typeof EfopRoute
   '/galeria': typeof GaleriaRoute
   '/hirek': typeof HirekRoute
   '/iskolankrol': typeof IskolankrolRoute
@@ -116,6 +125,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buszkesegeink'
     | '/dokumentumtar'
+    | '/efop'
     | '/galeria'
     | '/hirek'
     | '/iskolankrol'
@@ -128,6 +138,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buszkesegeink'
     | '/dokumentumtar'
+    | '/efop'
     | '/galeria'
     | '/hirek'
     | '/iskolankrol'
@@ -140,6 +151,7 @@ export interface FileRouteTypes {
     | '/auth'
     | '/buszkesegeink'
     | '/dokumentumtar'
+    | '/efop'
     | '/galeria'
     | '/hirek'
     | '/iskolankrol'
@@ -153,6 +165,7 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BuszkesegeinkRoute: typeof BuszkesegeinkRoute
   DokumentumtarRoute: typeof DokumentumtarRoute
+  EfopRoute: typeof EfopRoute
   GaleriaRoute: typeof GaleriaRoute
   HirekRoute: typeof HirekRoute
   IskolankrolRoute: typeof IskolankrolRoute
@@ -195,6 +208,13 @@ declare module '@tanstack/react-router' {
       path: '/galeria'
       fullPath: '/galeria'
       preLoaderRoute: typeof GaleriaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/efop': {
+      id: '/efop'
+      path: '/efop'
+      fullPath: '/efop'
+      preLoaderRoute: typeof EfopRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dokumentumtar': {
@@ -241,6 +261,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BuszkesegeinkRoute: BuszkesegeinkRoute,
   DokumentumtarRoute: DokumentumtarRoute,
+  EfopRoute: EfopRoute,
   GaleriaRoute: GaleriaRoute,
   HirekRoute: HirekRoute,
   IskolankrolRoute: IskolankrolRoute,

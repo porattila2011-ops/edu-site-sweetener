@@ -18,6 +18,7 @@ export const NAV = [
   { label: "Galéria", to: "/galeria" },
   { label: "Dokumentumtár", to: "/dokumentumtar" },
   { label: "Büszkeségeink", to: "/buszkesegeink" },
+  { label: "EFOP 3.1.6-2017-00036", to: "/efop" },
   { label: "Kapcsolat", to: "/kapcsolat" },
 ] as const;
 
