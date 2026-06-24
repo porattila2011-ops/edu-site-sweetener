@@ -192,6 +192,41 @@ export const CONTENT_SECTIONS: ContentSection[] = [
       { key: "kapcsolat.page_description", label: "Oldal leírása", type: "textarea", default: "Kérdésével, beiratkozással vagy szolgáltatásainkkal kapcsolatban szívesen segítünk." },
     ],
   },
+  {
+    id: "efop",
+    label: "EFOP projekt oldal",
+    description: "Az EFOP projekt oldal szövegei és képei.",
+    fields: [
+      { key: "efop.hero_eyebrow", label: "Felső címke", type: "text", default: "EFOP Projekt" },
+      { key: "efop.hero_title", label: "Főcím", type: "text", default: "EFOP 3.1.6-16-2017-00036" },
+      {
+        key: "efop.hero_description",
+        label: "Főcím leírása",
+        type: "textarea",
+        default: "Fejlesztő nevelés-oktatás megújítása és az utazó gyógypedagógusi, konduktori hálózat fejlesztése",
+      },
+      {
+        key: "efop.about_title",
+        label: "A projektről – cím",
+        type: "text",
+        default: "A projektről",
+      },
+      {
+        key: "efop.about_p1",
+        label: "A projektről – 1. bekezdés",
+        type: "textarea",
+        default:
+          "Az EFOP 3.1.6-16-2017-00036 jelű pályázat célja a fejlesztő nevelés-oktatás megújítása és az utazó gyógypedagógusi, konduktori hálózat fejlesztése volt.",
+      },
+      {
+        key: "efop.about_p2",
+        label: "A projektről – 2. bekezdés",
+        type: "textarea",
+        default:
+          "Intézményünk az elmúlt évek során számos szakmai napot, szülősegítő programot és közösségi eseményt szervezett e projekt keretében.",
+      },
+    ],
+  },
 ];
 
 export const CONTENT_DEFAULTS: Record<string, string> = Object.fromEntries(

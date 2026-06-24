@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout, PageHero } from "@/components/site-layout";
+import { useContent } from "@/hooks/use-content";
 
 export const Route = createFileRoute("/efop")({
   head: () => ({
@@ -18,6 +19,8 @@ export const Route = createFileRoute("/efop")({
 });
 
 function EFOP() {
+  const { c } = useContent();
+
   const events = [
     {
       id: 1,
@@ -131,9 +134,9 @@ function EFOP() {
   return (
     <SiteLayout>
       <PageHero
-        eyebrow="EFOP Projekt"
-        title="EFOP 3.1.6-16-2017-00036"
-        description="Fejlesztő nevelés-oktatás megújítása és az utazó gyógypedagógusi, konduktori hálózat fejlesztése"
+        eyebrow={c("efop.hero_eyebrow")}
+        title={c("efop.hero_title")}
+        description={c("efop.hero_description")}
       />
 
       <section className="container-page py-14 md:py-20">
@@ -191,16 +194,10 @@ function EFOP() {
 
       <section className="border-t border-border/60 bg-card">
         <div className="container-page py-14 md:py-20">
-          <h2 className="text-2xl font-bold text-foreground mb-4">A projektről</h2>
+          <h2 className="text-2xl font-bold text-foreground mb-4">{c("efop.about_title")}</h2>
           <div className="space-y-4 text-muted-foreground leading-relaxed max-w-2xl">
-            <p>
-              Az EFOP 3.1.6-16-2017-00036 jelű pályázat célja a fejlesztő nevelés-oktatás megújítása és az
-              utazó gyógypedagógusi, konduktori hálózat fejlesztése volt.
-            </p>
-            <p>
-              Intézményünk az elmúlt évek során számos szakmai napot, szülősegítő programot és közösségi
-              eseményt szervezett e projekt keretében.
-            </p>
+            <p>{c("efop.about_p1")}</p>
+            <p>{c("efop.about_p2")}</p>
           </div>
         </div>
       </section>
