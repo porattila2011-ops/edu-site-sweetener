@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { useQueryClient } from "@tanstack/react-query";
-import { supabase } from "@/integrations/supabase/client";
 import { useNews } from "@/hooks/use-news";
 import { uploadFile } from "@/lib/storage";
 import { formatNewsDate, type NewsItem } from "@/lib/news";
@@ -11,6 +10,8 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import { Pencil, Trash2, Plus, X, Loader2 } from "lucide-react";
+
+const NEWS_STORAGE_KEY = "edu-site-news";
 
 type FormState = {
   id: string | null;
@@ -90,15 +91,27 @@ export function NewsAdmin() {
         setSaving(false);
         return;
       }
+
+      const stored = localStorage.getItem(NEWS_STORAGE_KEY);
+      const allNews: NewsItem[] = stored ? JSON.parse(stored) : [];
+
       if (form.id) {
-        const { error } = await supabase.from("news").update(payload).eq("id", form.id);
-        if (error) throw error;
+        const idx = allNews.findIndex((n) => n.id === form.id);
+        if (idx >= 0) {
+          allNews[idx] = { ...allNews[idx], ...payload };
+        }
         toast.success("Hír frissítve.");
       } else {
-        const { error } = await supabase.from("news").insert(payload);
-        if (error) throw error;
+        const newItem: NewsItem = {
+          id: Date.now().toString(),
+          created_at: new Date().toISOString(),
+          ...payload,
+        } as NewsItem;
+        allNews.push(newItem);
         toast.success("Hír közzétéve.");
       }
+
+      localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(allNews));
       await queryClient.invalidateQueries({ queryKey: ["news"] });
       setEditing(false);
       setForm(EMPTY_FORM);
@@ -112,8 +125,10 @@ export function NewsAdmin() {
   async function handleDelete(id: string) {
     if (!confirm("Biztosan törlöd ezt a hírt?")) return;
     try {
-      const { error } = await supabase.from("news").delete().eq("id", id);
-      if (error) throw error;
+      const stored = localStorage.getItem(NEWS_STORAGE_KEY);
+      const allNews: NewsItem[] = stored ? JSON.parse(stored) : [];
+      const filtered = allNews.filter((n) => n.id !== id);
+      localStorage.setItem(NEWS_STORAGE_KEY, JSON.stringify(filtered));
       await queryClient.invalidateQueries({ queryKey: ["news"] });
       toast.success("Hír törölve.");
     } catch (err) {
