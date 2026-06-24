@@ -43,24 +43,54 @@ function News() {
                 key={n.id}
                 className="flex flex-col overflow-hidden rounded-3xl border border-border/60 bg-card shadow-[var(--shadow-soft)] transition-transform hover:-translate-y-1"
               >
-                {n.image_url && (
-                  <img
-                    src={n.image_url}
-                    alt={n.title}
-                    loading="lazy"
-                    className="aspect-[16/9] w-full object-cover"
-                  />
-                )}
-                <div className="flex flex-1 flex-col p-7">
-                  <div className="flex items-center gap-3 text-xs font-bold">
-                    {n.tag && (
-                      <span className="rounded-full bg-secondary px-3 py-1 text-secondary-foreground">{n.tag}</span>
+                {n.link_url ? (
+                  <a
+                    href={n.link_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex flex-1 flex-col"
+                  >
+                    {n.image_url && (
+                      <img
+                        src={n.image_url}
+                        alt={n.title}
+                        loading="lazy"
+                        className="aspect-[16/9] w-full object-cover"
+                      />
                     )}
-                    <span className="text-muted-foreground">{formatNewsDate(n.published_at)}</span>
-                  </div>
-                  <h2 className="mt-4 font-display text-xl font-extrabold leading-snug text-foreground">{n.title}</h2>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{n.excerpt}</p>
-                </div>
+                    <div className="flex flex-1 flex-col p-7">
+                      <div className="flex items-center gap-3 text-xs font-bold">
+                        {n.tag && (
+                          <span className="rounded-full bg-secondary px-3 py-1 text-secondary-foreground">{n.tag}</span>
+                        )}
+                        <span className="text-muted-foreground">{formatNewsDate(n.published_at)}</span>
+                      </div>
+                      <h2 className="mt-4 font-display text-xl font-extrabold leading-snug text-foreground">{n.title}</h2>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{n.excerpt}</p>
+                    </div>
+                  </a>
+                ) : (
+                  <>
+                    {n.image_url && (
+                      <img
+                        src={n.image_url}
+                        alt={n.title}
+                        loading="lazy"
+                        className="aspect-[16/9] w-full object-cover"
+                      />
+                    )}
+                    <div className="flex flex-1 flex-col p-7">
+                      <div className="flex items-center gap-3 text-xs font-bold">
+                        {n.tag && (
+                          <span className="rounded-full bg-secondary px-3 py-1 text-secondary-foreground">{n.tag}</span>
+                        )}
+                        <span className="text-muted-foreground">{formatNewsDate(n.published_at)}</span>
+                      </div>
+                      <h2 className="mt-4 font-display text-xl font-extrabold leading-snug text-foreground">{n.title}</h2>
+                      <p className="mt-3 flex-1 text-sm leading-relaxed text-muted-foreground">{n.excerpt}</p>
+                    </div>
+                  </>
+                )}
               </article>
             ))}
           </div>

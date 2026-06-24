@@ -4,6 +4,7 @@ export interface NewsItem {
   excerpt: string;
   tag: string | null;
   image_url: string | null;
+  link_url: string | null;
   published_at: string; // YYYY-MM-DD
 }
 
