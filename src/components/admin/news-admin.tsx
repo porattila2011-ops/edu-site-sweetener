@@ -19,6 +19,7 @@ type FormState = {
   tag: string;
   published_at: string;
   image_url: string | null;
+  link_url: string;
 };
 
 const EMPTY_FORM: FormState = {
@@ -28,6 +29,7 @@ const EMPTY_FORM: FormState = {
   tag: "",
   published_at: new Date().toISOString().slice(0, 10),
   image_url: null,
+  link_url: "",
 };
 
 export function NewsAdmin() {
@@ -51,6 +53,7 @@ export function NewsAdmin() {
       tag: item.tag ?? "",
       published_at: item.published_at,
       image_url: item.image_url,
+      link_url: item.link_url ?? "",
     });
     setEditing(true);
   }
@@ -80,6 +83,7 @@ export function NewsAdmin() {
         tag: form.tag.trim() || null,
         published_at: form.published_at,
         image_url: form.image_url,
+        link_url: form.link_url.trim() || null,
       };
       if (!payload.title || !payload.excerpt) {
         toast.error("A cím és a szöveg kötelező.");
@@ -194,6 +198,17 @@ export function NewsAdmin() {
                 value={form.excerpt}
                 onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
                 placeholder="A hír szövege…"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="link">Link (opcionális)</Label>
+              <Input
+                id="link"
+                type="url"
+                value={form.link_url}
+                onChange={(e) => setForm({ ...form, link_url: e.target.value })}
+                placeholder="https://example.com"
               />
             </div>
 
