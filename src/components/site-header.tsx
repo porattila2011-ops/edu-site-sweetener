@@ -17,7 +17,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/85 backdrop-blur-md">
       <div className="container-page flex h-16 items-center justify-between gap-4 md:h-20">
         <Link to="/" className="flex items-center gap-3" onClick={() => setOpen(false)}>
-          <img src="https://cdn.builder.io/api/v1/image/assets%2F33a6f2208867472d836804e5b9731057%2F6d40a2b087c646d7a13afcdecf8b27d1?format=webp&width=800&height=1200" alt="Dr. Molnár István EGYMI" className="h-11 w-11 object-cover rounded-2xl shadow-[var(--shadow-soft)]" />
+          <img src="https://cdn.builder.io/api/v1/image/assets%2F33a6f2208867472d836804e5b9731057%2F6d40a2b087c646d7a13afcdecf8b27d1?format=webp&width=800&height=1200" alt="Dr. Molnár István EGYMI" className="h-16 w-16 object-cover rounded-2xl shadow-[var(--shadow-soft)]" />
           <span className="flex flex-col leading-tight">
             <span className="font-display text-base font-extrabold text-foreground md:text-lg">
               Dr. Molnár István

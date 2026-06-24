@@ -61,7 +61,7 @@ export function SiteFooter() {
       <div className="container-page grid gap-10 pt-14 pb-8 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-2">
           <div className="flex items-center gap-3">
-            <img src="https://cdn.builder.io/api/v1/image/assets%2F33a6f2208867472d836804e5b9731057%2F6d40a2b087c646d7a13afcdecf8b27d1?format=webp&width=800&height=1200" alt="Dr. Molnár István EGYMI" className="h-11 w-11 object-cover rounded-2xl" />
+            <img src="https://cdn.builder.io/api/v1/image/assets%2F33a6f2208867472d836804e5b9731057%2F6d40a2b087c646d7a13afcdecf8b27d1?format=webp&width=800&height=1200" alt="Dr. Molnár István EGYMI" className="h-16 w-16 object-cover rounded-2xl" />
             <span className="font-display text-lg font-extrabold">
               Dr. Molnár István EGYMI
             </span>
