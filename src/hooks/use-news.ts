@@ -1,23 +1,24 @@
 import { useQuery } from "@tanstack/react-query";
+import { supabase } from "@/integrations/supabase/client";
 import type { NewsItem } from "@/lib/news";
 
-const NEWS_STORAGE_KEY = "edu-site-news";
+const COLUMNS = "id,title,excerpt,tag,image_url,published_at,link_url";
 
 export function useNews(limit?: number) {
   return useQuery({
     queryKey: ["news", limit ?? "all"],
     queryFn: async (): Promise<NewsItem[]> => {
-      const stored = localStorage.getItem(NEWS_STORAGE_KEY);
-      let news: NewsItem[] = stored ? JSON.parse(stored) : [];
+      let query = supabase
+        .from("news")
+        .select(COLUMNS)
+        .order("published_at", { ascending: false })
+        .order("created_at", { ascending: false });
 
-      news.sort((a, b) => {
-        const dateA = new Date(b.published_at).getTime();
-        const dateB = new Date(a.published_at).getTime();
-        return dateA - dateB;
-      });
+      if (limit) query = query.limit(limit);
 
-      if (limit) news = news.slice(0, limit);
-      return news;
+      const { data, error } = await query;
+      if (error) throw error;
+      return (data ?? []) as NewsItem[];
     },
   });
 }
