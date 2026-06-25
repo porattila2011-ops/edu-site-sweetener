@@ -10,6 +10,7 @@ import { ContentAdmin } from "@/components/admin/content-admin";
 import { AchievementsAdmin } from "@/components/admin/achievements-admin";
 import { GalleryAdmin } from "@/components/admin/gallery-admin";
 import { AdminUsers } from "@/components/admin/admin-users";
+import { EFOPAdmin } from "@/components/admin/efop-admin";
 import { toast } from "sonner";
 import { LogOut, ShieldCheck, Loader2 } from "lucide-react";
 
@@ -141,6 +142,7 @@ function AdminPage() {
           <TabsList className="mb-8 flex h-auto flex-wrap justify-start gap-1">
             <TabsTrigger value="content">🎨 Szövegek & Képek</TabsTrigger>
             <TabsTrigger value="gallery">🖼️ Galéria</TabsTrigger>
+            <TabsTrigger value="efop">📋 EFOP Projekt</TabsTrigger>
             <TabsTrigger value="news">📰 Hírek</TabsTrigger>
             <TabsTrigger value="documents">📄 Dokumentumtár</TabsTrigger>
             <TabsTrigger value="achievements">⭐ Büszkeségeink</TabsTrigger>
@@ -156,6 +158,12 @@ function AdminPage() {
           <TabsContent value="gallery">
             <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
               <GalleryAdmin />
+            </div>
+          </TabsContent>
+
+          <TabsContent value="efop">
+            <div className="rounded-3xl border border-border/60 bg-card p-6 shadow-[var(--shadow-soft)] md:p-8">
+              <EFOPAdmin />
             </div>
           </TabsContent>
 
